@@ -10,7 +10,7 @@ import numpy as np
 import pylab as pl
 import math
 ########  Set the Device Parameters  ###########
-delT = 1514                    #Activation temperature in degrees C from the ambient temperature
+delT = 1524                    #Activation temperature in degrees C from the ambient temperature
 Trt = 296                       #done #Ambient temperature in degrees C
 de = 30 * 10**-9                #done #Electrode thickness
 do = 6 * 10**-9                	#done #Oxide thickness
