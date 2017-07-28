@@ -10,7 +10,7 @@ from scipy.optimize import curve_fit
 import pylab as pl
 import csv
 
-f = open('offSwitch-SNP5C3NC-green-(-5)-0.csv','rb')           #This is the experimental current-voltage data from only the OFF state. 
+f = open('offSwitch-SNP5C3NC-green-(-5)-5(ALLOFF).csv','rb')           #This is the experimental current-voltage data from only the OFF state. 
 expData = csv.reader(f)                     #The resistance should be changing due to nonlinearity only, not state change.
 expVs = []
 expIs = []

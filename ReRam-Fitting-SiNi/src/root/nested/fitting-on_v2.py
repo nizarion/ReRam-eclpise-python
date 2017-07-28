@@ -47,7 +47,7 @@ IV = np.array(IV)
 PR = PRconvert(IV)                                  #Convert the current-voltage data to power-resistance data
 PR = np.array(PR)
 
-pinit = [105.5,5*10**5,1750]                        #Initialize the values for [electrode thermal conductivity (ke), saturation conductivity (sigSat), activation temperature (Tc)]
+pinit = [105.5,5*10**5,1750]                        #was pinit = [105.5,5*10**5,1750] #Initialize the values for [electrode thermal conductivity (ke), saturation conductivity (sigSat), activation temperature (Tc)]
 popt,pconv = curve_fit(onSwitch,PR[:,1],PR[:,0],p0=pinit)       #Fit the data to the power-resistance relation to determine the ke, sigSat, and Tc values
 print "ke, sigSat, and Tc values:"
 print popt
