@@ -13,18 +13,18 @@ import csv
 import sys
 import pandas as pd
 ########  Set the Device Parameters  ###########
-delT = 3000                     #Activation temperature in degrees C from the ambient temperature
+delT = 2.99999978e+03           #Activation temperature in degrees C from the ambient temperature
 Trt = 296                       #done #Ambient temperature in degrees C
 de = 30 * 10**-9                #done #Electrode thickness
-do = 6 * 10**-9                 #done #Oxide thickness
-ke = 1.42102173e+02             #done1 #@fittin-ON #Effective electrode thermal conductivity - Usually higher than bulk values due to spreading effects 
+do = 6 * 10**-9                    #done #Oxide thickness
+ke = 2.30496068e+02             #done1 #@fittin-ON #Effective electrode thermal conductivity - Usually higher than bulk values due to spreading effects 
 Lwf = 2.44 * 10**-8             #Wiedemann-Franz constant
 
-sigSat = 3.89663484e+05         #@fittin-ON #Saturation Conductivity in the Filament 
+sigSat = 2.98235610e+05         #@fittin-ON #Saturation Conductivity in the Filament 
 maxConc = 100                   #The maximum concentration of oxygen vacancies or dopants in arbitrary units #de_mas_noiazei
-minConc = 50                   #The minimum concentration of oxygen vacancies or dopants in arbitrary units #de_mas_noiazei
-a = 4.04217926e-06              #@OFF #Amplitude coefficient for Poole-Frenkel contribution
-b = 2.31860943e+00              #@OFF #Nonlinearity coefficient for Poole-Frenkel contribution 
+minConc = 10                    #The minimum concentration of oxygen vacancies or dopants in arbitrary units #de_mas_noiazei
+a = 2.74232775e-06              #@OFF #Amplitude coefficient for Poole-Frenkel contribution
+b = 2.31861026e+00              #@OFF #Nonlinearity coefficient for Poole-Frenkel contribution 
 ######## End of Parameters Section ###########
 
 Ar = 2*ke*do/(sigSat * de)                                  #Coefficient for radius change equation is composed of previously defined parameters
@@ -173,7 +173,7 @@ temp = -4
 maxVoltage = 0
 
 #Switch On
-CurrSpacing = np.logspace(-12,-1,100)                #Use current sourcing to sweep from 0 to 6 mA # was 50 CurrSpacing = np.linspace(0,6*10**-3,5)
+CurrSpacing = np.logspace(-12,-2,100)                #Use current sourcing to sweep from 0 to 6 mA # was 50 CurrSpacing = np.linspace(0,6*10**-3,5)
 CurrentSweep = CurrSpacing
 for val in reversed(CurrSpacing):
     CurrentSweep = np.hstack([CurrentSweep,val])        #Also sweep from 6 mA back to 0

@@ -23,13 +23,13 @@ f.close()
 
 #These should all be the same as will be used in the simulation code
 ########  Set the Device Parameters  ###########
-sigSat = 3.89663484e+05                       #Saturation conductivity was previously found from fitting the ON switching data @fitting-ON
+sigSat = 2.98235610e+05                       #Saturation conductivity was previously found from fitting the ON switching data @fitting-ON
 numberOfShells = 200                            #Number of Grids in the Radial Direction
 thickness = 6 * 10**-9                         #Vertical Thickness in the z direction
 simRadiusRange = 20 * 10**-9                    #The full spacial range of the simulation
 shellSize = simRadiusRange/numberOfShells       #Calculate GridSpacing
 
-rmax = 4.9911519869e-09                     #@ON #This is the radius that was previously found from fitting the ON switching data @fitting-ON
+rmax = 6.82621092109e-09                     #@ON #This is the radius that was previously found from fitting the ON switching data @fitting-ON
 ######## End of Parameters Section ###########
 numAtrmax = int(rmax/shellSize)
 
