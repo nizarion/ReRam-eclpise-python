@@ -38,7 +38,7 @@ def PRconvert(IV):                          #This function converts current-volt
 
 
 ###########  Load and Fit Data  ##############
-IVdata = csv.reader(open('onSwitch-sn7cuc13-2ndpos-309-390v2.csv','rb'))      #A csv file is used where the columns are voltage then current. 
+IVdata = csv.reader(open('onSwitch-SNP5C3NC-green-0-5.csv','rb'))      #A csv file is used where the columns are voltage then current. 
 IV = []                                             #This data is only the ON switching while the resistance is changing.
 for row in IVdata:
     IV.append([float(row[1]),float(row[0])])        #This reverses the order to match with the order in the variable name - IV is I then V

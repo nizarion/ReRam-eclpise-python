@@ -10,7 +10,7 @@ from scipy.optimize import curve_fit
 import pylab as pl
 import csv
 
-f = open('Nonlinearity-sn7cuc13-2ndneg-257-308v3.csv','rb')           #This is the experimental current-voltage data from only the OFF state. 
+f = open('offSwitch-SNP5C3NC-green-(-5)-0.csv','rb')           #This is the experimental current-voltage data from only the OFF state. 
 expData = csv.reader(f)                     #The resistance should be changing due to nonlinearity only, not state change.
 expVs = []
 expIs = []
@@ -23,13 +23,13 @@ f.close()
 
 #These should all be the same as will be used in the simulation code
 ########  Set the Device Parameters  ###########
-sigSat = 2.47 * 10**5                       #Saturation conductivity was previously found from fitting the ON switching data @fitting-ON
+sigSat = 3.89663484e+05                       #Saturation conductivity was previously found from fitting the ON switching data @fitting-ON
 numberOfShells = 200                            #Number of Grids in the Radial Direction
 thickness = 6 * 10**-9                         #Vertical Thickness in the z direction
 simRadiusRange = 20 * 10**-9                    #The full spacial range of the simulation
 shellSize = simRadiusRange/numberOfShells       #Calculate GridSpacing
 
-rmax = 4.39 * 10**-10                     #@ON #This is the radius that was previously found from fitting the ON switching data @fitting-ON
+rmax = 4.9911519869e-09                     #@ON #This is the radius that was previously found from fitting the ON switching data @fitting-ON
 ######## End of Parameters Section ###########
 numAtrmax = int(rmax/shellSize)
 
