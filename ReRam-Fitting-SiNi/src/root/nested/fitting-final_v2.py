@@ -9,19 +9,22 @@ Related theory is described in "Isothermal Switching and Detailed Filament Evolu
 import numpy as np
 import pylab as pl
 import math
+import csv
+import sys
+import pandas as pd
 ########  Set the Device Parameters  ###########
-delT = 1524                    #Activation temperature in degrees C from the ambient temperature
+delT = 3000                     #Activation temperature in degrees C from the ambient temperature
 Trt = 296                       #done #Ambient temperature in degrees C
 de = 30 * 10**-9                #done #Electrode thickness
-do = 6 * 10**-9                	#done #Oxide thickness
-ke = 195                     	#done1 #@fittin-ON #Effective electrode thermal conductivity - Usually higher than bulk values due to spreading effects 
-Lwf = 2.44 * 10**-8             #Wiedemann-Franz constant #stathera
+do = 6 * 10**-9                 #done #Oxide thickness
+ke = 1.42102173e+02             #done1 #@fittin-ON #Effective electrode thermal conductivity - Usually higher than bulk values due to spreading effects 
+Lwf = 2.44 * 10**-8             #Wiedemann-Franz constant
 
-sigSat = 2.47 * 10**5           #@fittin-ON #Saturation Conductivity in the Filament 
-maxConc = 500                   #The maximum concentration of oxygen vacancies or dopants in arbitrary units 
-minConc = 100                    #The minimum concentration of oxygen vacancies or dopants in arbitrary units 
-a = 1.06946442e-13                     #@OFF #Amplitude coefficient for Poole-Frenkel contribution
-b = 7.08532181e-01                     #@OFF #Nonlinearity coefficient for Poole-Frenkel contribution 
+sigSat = 3.89663484e+05         #@fittin-ON #Saturation Conductivity in the Filament 
+maxConc = 800                   #The maximum concentration of oxygen vacancies or dopants in arbitrary units #de_mas_noiazei
+minConc = 200                   #The minimum concentration of oxygen vacancies or dopants in arbitrary units #de_mas_noiazei
+a = 8.23604156e-10              #@OFF #Amplitude coefficient for Poole-Frenkel contribution
+b = 9.27822710e-01              #@OFF #Nonlinearity coefficient for Poole-Frenkel contribution 
 ######## End of Parameters Section ###########
 
 Ar = 2*ke*do/(sigSat * de)                                  #Coefficient for radius change equation is composed of previously defined parameters
@@ -200,5 +203,57 @@ for voltageVal in VoltageSweep:
         logCurrents.append(np.log10(abs(current)))
         temp = np.log10(abs(current))
 
+
+# with open('output-IV-SNP5C3.csv', 'w+') as csvfile:
+#     spamwriter = csv.writer(csvfile, delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINIMAL)
+#     spamwriter.writerow(Voltages)
+#     spamwriter.writerow(Currents)
+
+# # out = open('output-IV-SNP5C3.csv', 'w')
+# # for row in Voltages:
+# #     for column in row:
+# #         out.write('%d,' % column)
+# #     out.write('\n')
+# # out.close()
+#  
+# # f = open(sys.argv[1], 'wt')
+# # try:
+# #     writer = csv.writer(f)
+# #     writer.writerow( ('Title 1', 'Title 2', 'Title 3') )
+# #     for i in range(10):
+# #         writer.writerow( (i+1, chr(ord('a') + i), '08/%02d/07' % (i+1)) )
+# # finally:
+# #     f.close()
+#      
+# #print(Voltages,",",Currents)
+#  
+# # ifile  = open('test.csv', "r+")
+# # reader = csv.reader(ifile)
+# ofile  = open('output-IV-SNP5C3.csv', "w+")
+# writer = csv.writer(ofile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+#   
+# for i in Voltages):
+#     writer.writerow(Voltages[i])
+#   
+# # ifile.close()
+# # ofile.close()
+
+# numpy.savetxt("output-IV-SNP5C3.csv", a, delimiter=",")
+
+df = pd.DataFrame({ "Voltages" : Voltages, "Currents" : Currents})
+df.to_csv("output-IV-SNP5C3.csv", index=False)
+
 pl.plot(Voltages,logCurrents) #pl.plot(Voltages,Currents OR logCurrents)
 pl.show()
+
+
+
+
+
+
+
+
+
+
+
+
